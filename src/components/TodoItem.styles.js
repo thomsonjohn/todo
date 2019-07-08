@@ -13,4 +13,6 @@ export const Wrapper = styled.div`
     flexDirection: row;
     margin-bottom: 1em;
     align-items: center;
+    font-family: Arial;
+    font-size: 0.8em;
 `
