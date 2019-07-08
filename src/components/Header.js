@@ -1,15 +1,16 @@
 import React from 'react'
+import { Wrapper, Heading, SubHeading, Image } from './Header.styles'
 
 const Header = (props) => {
-    const { name, signOut } = props
+    const { image, name, signOut } = props
     return (
-        <div>
-            <button onClick={() => signOut()}>Sign Out</button>
-            <header className="App-header">
-              <h1>Hey {name}</h1>
-              <h4>this is your to-do list</h4>
+        <Wrapper>
+            <header>
+              <Heading>Hey {name}</Heading>
+              <SubHeading>this is your to-do list</SubHeading>
             </header>
-        </div>
+            <Image src={image} alt="user profile" onClick={() => signOut()} />
+        </Wrapper>
     )
 }
 

@@ -1,11 +1,13 @@
 import React from 'react'
+import { Bullet, Wrapper } from './TodoItem.styles'
 
 const TodoItem = (props) => {
     const { todo } = props
     return (
-        <div>
+        <Wrapper>
+            <Bullet />
             {todo}
-        </div>
+        </Wrapper>
     )
 }
 
