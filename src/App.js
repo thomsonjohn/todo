@@ -44,7 +44,11 @@ class App extends React.Component {
       <div className="App">
         {this.state.isSignedIn ?
           <div>
-            <Header name={this.state.user.displayName} signOut={() => firebase.auth().signOut()} />
+            <Header 
+              image={this.state.user.photoURL} 
+              name={this.state.user.displayName.split(' ')[0]}
+              signOut={() => firebase.auth().signOut()} 
+            />
             <TodoList />
           </div>
           :
