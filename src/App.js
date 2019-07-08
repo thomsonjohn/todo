@@ -2,6 +2,9 @@ import React from 'react';
 import firebase from 'firebase'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 
+import Header from './components/Header'
+import TodoList from './components/TodoList'
+
 const API_KEY = process.env.REACT_APP_FIREBASE_API_KEY
 
 firebase.initializeApp({
@@ -41,17 +44,8 @@ class App extends React.Component {
       <div className="App">
         {this.state.isSignedIn ?
           <div>
-            <button onClick={()=>firebase.auth().signOut()}>Sign Out</button>
-            <header className="App-header">
-              <h1>Hey {this.state.user.displayName}</h1>
-              <h4>this is your to-do list</h4>
-            </header>
-            <div className="todo-list">
-              <p>Feed the raptors</p>
-              <p>Wash time machine</p>
-              <p>Meditate</p>
-              <p>Do some yoga</p>
-            </div>
+            <Header name={this.state.user.displayName} signOut={() => firebase.auth().signOut()} />
+            <TodoList />
           </div>
           :
           <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
