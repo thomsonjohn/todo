@@ -2,17 +2,18 @@ import React from 'react'
 import { Wrapper } from './TodoList.styles'
 
 import TodoItem from './TodoItem'
+import NewTodo from './NewTodo'
 
-const todoItems = ['feed the raptors', 'wash time machine', 'meditate', 'do some yoga']
-
-const TodoList = () => {
+const TodoList = (props) => {
+    const { todo, items, onChange, onSubmit } = props
     return (
         <Wrapper>
-            {todoItems.map(todo => {
+            {items.map((todo, index) => {
                 return (
-                    <TodoItem todo={todo} />
+                    <TodoItem todo={todo} key={index} />
                 )
             })}
+            <NewTodo todo={todo} onChange={onChange} onSubmit={onSubmit} />
         </Wrapper>
     )
 }

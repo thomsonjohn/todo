@@ -16,7 +16,9 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isSignedIn: false
+      isSignedIn: false,
+      items: ['feed the raptors', 'wash time machine', 'meditate', 'do some yoga'],
+      todo: ''
     }
   }
 
@@ -26,6 +28,18 @@ class App extends React.Component {
         isSignedIn: !!user,
         user
       })
+    })
+  }
+
+  onChange = (event) => {
+    this.setState({ todo: event.target.value })
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault()
+    this.setState({
+      todo: '',
+      items: [...this.state.items, this.state.todo]
     })
   }
 
@@ -49,7 +63,7 @@ class App extends React.Component {
               name={this.state.user.displayName.split(' ')[0]}
               signOut={() => firebase.auth().signOut()} 
             />
-            <TodoList />
+            <TodoList todo={this.state.todo} items={this.state.items} onChange={this.onChange} onSubmit={this.onSubmit} />
           </div>
           :
           <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
